@@ -168,8 +168,7 @@ Define the local variables needed, including:
 ## Get the needed data {.smaller}
 
 ```{r}
-#| label: get-data
-#| echo: !expr '14:18'
+#| label: get-data1
 #######################################
 #
 # HERE IS WHERE THE DATA IS RETRIEVED
@@ -179,7 +178,11 @@ Define the local variables needed, including:
 ### Uncomment these to use the provided data files
 setCfg("data_source","from_file_path","data")
 cfg <- getCfg()
-
+```
+```{r}
+#| label: get-data2
+#| echo: true
+#| code-line-numbers: "|4|"
 #
 # Get terms data from DB
 #
@@ -194,12 +197,19 @@ terms <- getColleagueData( "Term_CU", schema = "dw_dim" ) %>%
             Term_Reporting_Year = Reporting_Year_FSS,
             Academic_Year = Reporting_Academic_Year_FSS ) %>%
     collect() %>%
+    dplyr::mutate( Term_Index = as.integer(.data$Term_Index),
+                   Term_Start_Date = as.Date(.data$Term_Start_Date),
+                   Term_End_Date = as.Date(.data$Term_End_Date),
+                   Term_Census_Date = as.Date(.data$Term_Census_Date),
+                   Term_Reporting_Year = as.integer(.data$Term_Reporting_Year) ) %>%
     mutate( Term_Reporting_Year = as.integer(Term_Reporting_Year) )
 
 # Additionally:
 # - Get data from PERSON and ipeds_cohorts from files/DB
 # - Get data via haywoodcc package for credential_seekers and term_enrollment
-
+```
+```{r}
+#| label: get-data3
 reporting_terms <- terms %>%
     filter( Term_Reporting_Year == report_year + 1 )
 
@@ -281,6 +291,7 @@ This is where the sausage is made.
 ```{r}
 #| label: process-data
 #| echo: true
+#| code-line-numbers: "|3|"
 # As an example, create a df with distance load identified
 #    ...this is used later on to determine if enrolled exclusively online
 student_enrollment_all <- student_term_enrollment %>%
@@ -407,6 +418,7 @@ e12_c_cols <- c( UNITID=NA_character_, SURVSECT=NA_character_, PART=NA_character
 ```{r}
 #| label: create-ipeds-df-2
 #| echo: true
+#| code-line-numbers: "|11|13|14-15|20|3|"
 # This creates Part A.
 # The first line looks like this in the output:
 # 198668E12A 3       000000000000000001000004000001000002000000000001...
@@ -415,13 +427,11 @@ ipeds_e12_a <- se_cohorts %>%
     select( Campus_ID, LINE, IPEDS_Race_Gender_Code ) %>%
     distinct() %>%
     mutate( student = 1 ) %>%
-    ### <b>
     group_by( LINE, IPEDS_Race_Gender_Code ) %>%
     summarise( Students = sprintf("%06d", sum(student) ), .groups = "drop" ) %>%
     spread( IPEDS_Race_Gender_Code, Students, fill="000000" ) %>%
     ungroup() %>%
     add_column( !!!race_gender_cols[!names(race_gender_cols) %in% names(.)] ) %>%
-    ### </b>
     mutate_at(.vars=names(race_gender_cols), 
               function(x) {return( coalesce(x,"000000") )} ) %>%
     mutate( UNITID = cfg$school$ipeds,
