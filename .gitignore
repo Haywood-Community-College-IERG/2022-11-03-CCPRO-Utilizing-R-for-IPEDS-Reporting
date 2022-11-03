@@ -5,6 +5,7 @@
 /renv
 /FixData.r
 /*.pdf
+!Utilizing-R-for-IPEDS-Reporting.pdf
 /*.html
 .Rdata
 .httr-oauth
