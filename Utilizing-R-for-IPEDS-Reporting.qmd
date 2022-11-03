@@ -2,11 +2,11 @@
 title: "Utilizing R for IPEDS Reporting"
 subtitle: "2022 CCPRO Annual Meeting"
 author: "David Onder"
-date: "11/2/2022"
+date: "11/3/2022"
 format:
   revealjs:
     institute: "Haywood Community College"
-    theme: "beige"
+    theme: "moon" # "league" # "moon" # "solarized"
     incremental: true
     show-slide-number: "all"
     logo: HCC_Logo.png
@@ -21,7 +21,7 @@ execute:
   output: false
   results: 'hide'
 params:
-  write_output: false
+  write_output: true
 ---
 
 ## Rationale
@@ -490,7 +490,7 @@ What questions do you have?
 
 
 Contact:  
-David Onder  
+David Onder 
 Haywood Community College  
 donder@haywood.edu  
-_URL_: https://github.com/Haywood-Community-College-IERG/2022-11-03-CCPRO-Utilizing-R-for-IPEDS-Reporting
+_URL_: <https://github.com/Haywood-Community-College-IERG/2022-11-03-CCPRO-Utilizing-R-for-IPEDS-Reporting>
