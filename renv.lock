@@ -274,6 +274,30 @@
         "processx"
       ]
     },
+    "ccdwr": {
+      "Package": "ccdwr",
+      "Version": "1.0.4",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "Haywood-Community-College-IERG",
+      "RemoteRepo": "ccdwr",
+      "RemoteRef": "main",
+      "RemoteSha": "24b34247494afcb78e74f8fb82836379469c6c47",
+      "Hash": "07f33953412936365de6b9e98c2053c1",
+      "Requirements": [
+        "dbplyr",
+        "dplyr",
+        "fs",
+        "glue",
+        "magrittr",
+        "odbc",
+        "readr",
+        "rlang",
+        "stringr",
+        "yaml"
+      ]
+    },
     "cellranger": {
       "Package": "cellranger",
       "Version": "1.1.0",
@@ -777,32 +801,26 @@
     },
     "haywoodcc": {
       "Package": "haywoodcc",
-      "Version": "0.0.2022-04-07.2",
+      "Version": "0.1.6",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "haywoodcc",
       "RemoteUsername": "Haywood-Community-College-IERG",
-      "RemotePkgRef": "Haywood-Community-College-IERG/haywoodcc",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "3193d9c4dac874c310589b41d8300bf3168c907c",
-      "Hash": "5d6018693034a098277005069b9a9fd6",
+      "RemoteRepo": "haywoodcc",
+      "RemoteRef": "master",
+      "RemoteSha": "63c634e18b391b2a8e130323101c0c3b88836a2c",
+      "Remotes": "git::https://github.com/Haywood-Community-College-IERG/ccdwr",
+      "Hash": "7c73afd53675d36529dd2b087680070d",
       "Requirements": [
-        "dbplyr",
+        "ccdwr",
         "dplyr",
-        "fs",
-        "glue",
         "lubridate",
         "magrittr",
-        "odbc",
         "purrr",
         "readr",
         "rlang",
         "stringr",
-        "tibble",
-        "tidyr",
-        "tidyverse",
-        "yaml"
+        "tidyr"
       ]
     },
     "highr": {
@@ -1429,16 +1447,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.0.2",
-      "Source": "CRAN",
+      "Version": "1.0.6",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "rlang",
-      "RemoteRef": "rlang",
-      "RemoteRepos": "https://cran.microsoft.com/snapshot/2022-04-04",
-      "RemotePkgPlatform": "i386+x86_64-w64-mingw32",
-      "RemoteSha": "1.0.2",
-      "Hash": "04884d9a75d778aca22c7154b8333ec9",
+      "Hash": "4ed1f8336c8d52c3e750adcdc57228a7",
       "Requirements": []
     },
     "rmarkdown": {
