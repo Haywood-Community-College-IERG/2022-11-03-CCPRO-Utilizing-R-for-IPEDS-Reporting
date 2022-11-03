@@ -1,0 +1,15 @@
+ # Define school specific parameters
+school:
+  name: Haywood Community College
+  abbrev: HCC
+  ipeds: 198668
+  fice: "008083"
+  usgov: 37087
+  ncccs: 842
+  instid: 0019844
+  inststate: NC
+  instcountry: US
+  branch: "00"
+
+config:
+  location: self
